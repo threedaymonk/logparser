@@ -1,4 +1,5 @@
-require File.dirname(__FILE__)+'/test_helper'
+$:.unshift(File.join(File.dirname(__FILE__), "..", "lib"))
+require 'test/unit'
 require 'logparser'
 
 class GeneralParsingTest < Test::Unit::TestCase
@@ -100,5 +101,4 @@ class GeneralParsingTest < Test::Unit::TestCase
     line = Line.new(Template.new('":referrer"'), %{"foo"\n})
     assert_equal 'foo', line.referrer
   end
-
 end

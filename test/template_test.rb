@@ -1,8 +1,8 @@
-require File.dirname(__FILE__)+'/test_helper'
-require 'logparser'
+$:.unshift(File.join(File.dirname(__FILE__), "..", "lib"))
+require 'test/unit'
+require 'logparser/template'
 
 class TemplateTest < Test::Unit::TestCase
-
   def test_should_extract_fields_from_pattern
     template = LogParser::Template.new(":a :b :c")
     assert_equal [:a, :b, :c], template.fields
@@ -17,5 +17,4 @@ class TemplateTest < Test::Unit::TestCase
     template = LogParser::Template.new(":foo :bar [:baz]")
     assert_equal({:foo => 'Foo', :bar => 'Bar', :baz => 'Baz'}, template.apply('Foo Bar [Baz]'))
   end
-
 end
